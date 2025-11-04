@@ -5,16 +5,16 @@ class BankAccount:
 
     def deposit(self, amount):
         if amount <= 0:
-            return "Вы ничего не внесли"
+            raise ValueError("Сумма должна быть положительной")
         if amount > 0:
             self.balance += amount
             return f"Вы пополнили баланс на {amount}. Баланс: {self.balance}"
         
     def withdraw(self, amount):
         if amount <= 0:
-            return "Error"
+            raise ValueError("Вы не можете снять отрицательную сумму")
         if amount > self.balance:
-            return "Недостаточно средств"
+            raise ValueError("Недостаточно средств")
         if amount > 0 and amount <= self.balance:
             self.balance -= amount
             return f"Вы сняли {amount}. Баланс: {self.balance}"
